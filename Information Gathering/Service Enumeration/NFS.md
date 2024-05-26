@@ -7,6 +7,8 @@
   *  Where does this FTP directory exist on the filesystem?
       *  Does it overlap with another service?
       *  `Google` names of interesting directories and files
+  *  Any writable NFS exports appear to be frequently opened?
+      *  Consider setting a [trap to coerce authentication](https://www.ired.team/offensive-security/initial-access/t1187-forced-authentication)
 
 ## Things to remember
   *  Always use `ls -la` to list hidden files/dirs
