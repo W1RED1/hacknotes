@@ -10,6 +10,8 @@
   *  Where does this FTP directory exist on the filesystem?
       *  Does it overlap with another service?
       *  `Google` names of interesting directories and files
+  *  Any writable shares appear to be frequently opened?
+      *  Consider setting a [trap to coerce authentication](https://www.ired.team/offensive-security/initial-access/t1187-forced-authentication)
 
 ## Things to remember
   *  Manual [FTP protocol commands](https://en.wikipedia.org/wiki/List_of_FTP_commands) requires manipulation of both [control and data channels](https://userpages.umbc.edu/~dgorin1/451/OSI7/dcomm/ftp.htm)
