@@ -8,6 +8,8 @@
       *  Do filesystem locations of SMB shares overlap with another service?
       *  Directories/files of interest, can we read/write them?
   *  Is NetBIOS listening? Why? Are there endpoints with old/alt OSes somewhere?
+  *  Any writable shares appear to be frequently opened?
+      *  Consider setting a [trap to coerce authentication](https://www.ired.team/offensive-security/initial-access/t1187-forced-authentication)
 
 ## Things to remember
   *  [NetBIOS](https://datatracker.ietf.org/doc/html/rfc1001) is a legacy API providing [IPC](https://en.wikipedia.org/wiki/Inter-process_communication)
