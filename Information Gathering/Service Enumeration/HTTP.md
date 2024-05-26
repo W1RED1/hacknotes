@@ -7,6 +7,8 @@
       *  Any plugins installed?
   *  Anything weird in the source code?
   *  What HTTP methods are available?
+  *  Any writable WebDAV shares appear to be frequently opened?
+      *  Consider setting a [trap to coerce authentication](https://www.ired.team/offensive-security/initial-access/t1187-forced-authentication)
 
 ## Things to remember
   *  `searchsploit` and `Google` **all the things**
