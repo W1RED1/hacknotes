@@ -5,6 +5,8 @@
       *  Does it overlap with another service?
   *  What are my permissions?
       *  Directories/files of interest, can we read/write them?
+  *  Writable directories known to be frequently opened?
+      *  Consider setting a [trap to coerce authentication](https://www.ired.team/offensive-security/initial-access/t1187-forced-authentication)
 
 ## Things to remember:
   *  [TFTP](https://en.wikipedia.org/wiki/Trivial_File_Transfer_Protocol) is primarily used to [deliver boot images](https://en.wikipedia.org/wiki/Preboot_Execution_Environment)
