@@ -65,7 +65,7 @@ PS > Invoke-LDAPSearch -username "bob" -password "pass123"
   *  Hunt for target services by querying for [service principal names](https://learn.microsoft.com/en-us/windows/win32/ad/service-principal-names)
   *  `impacket-GetUserSPNs` for gathering service principal names from linux
   *  `Get-SPN.ps1` or `Invoke-LDAPSearch.ps1` can be used to enumerate SPNs without requesting tickets
-      *  Useful preparation for [kerberoasting](https://github.com/SpacemanHenry/hacknotes/blob/main/Exploitation/Authentication/Kerberoast.md)
+      *  Useful preparation for [kerberoasting](https://github.com/SpacemanHenry/hacknotes/blob/main/Exploitation/Authentication/Kerberos/Kerberoast.md)
 
 ```
 impacket-GetUserSPNs example.com/bob:password -dc-ip 10.0.0.1
