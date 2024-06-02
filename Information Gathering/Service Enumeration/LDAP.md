@@ -81,7 +81,7 @@ PS > Get-SPN -type service -search "*"
 PS > Invoke-LDAPQuery "serviceprincipalname=*"
 ```
 
-## Delegation permissions
+## [Delegation](https://github.com/SpacemanHenry/hacknotes/blob/main/Exploitation/Authentication/Kerberos/Delegation.md) permissions
   *  Hunt for user/computer objects configured with delegation permissions
   *  Enumerating delegation relies on specific object attributes being readable
       *  [`useraccountcontrol`](https://learn.microsoft.com/en-us/troubleshoot/windows-server/active-directory/useraccountcontrol-manipulate-account-properties) attribute to [check what delegations are enabled](https://www.techjutsu.ca/uac-decoder) 
