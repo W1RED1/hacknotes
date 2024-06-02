@@ -15,6 +15,7 @@
   *  [`ldapsearch`](https://linux.die.net/man/1/ldapsearch) for precise LDAP searching
   *  Custom [`Invoke-LDAPSearch.ps1`](https://github.com/SpacemanHenry/hacknotes/blob/main/Post%20Exploitation/Privilege%20Escalation/Windows/Powershell%20Scripts/Invoke-LDAPSearch.ps1) for searching LDAP from `powershell`
   *  [`impacket-GetUserSPNs`](https://github.com/fortra/impacket/blob/master/examples/GetUserSPNs.py) and [`Get-SPN.ps1`](https://github.com/fortra/impacket/blob/master/examples/GetUserSPNs.py) for gathering service principal names
+  *  [`impacket-findDelegation`](https://github.com/fortra/impacket/blob/master/examples/findDelegation.py) for automatically gathering delegation permissions
 
 ## Additonal NSE enumeration
   *  `nmap` [LDAP NSE scripts](https://nmap.org/search/?q=ldap) without credentials will not yield much
@@ -63,9 +64,9 @@ PS > Invoke-LDAPSearch -username "bob" -password "pass123"
 
 ## Gathering SPNs
   *  Hunt for target services by querying for [service principal names](https://learn.microsoft.com/en-us/windows/win32/ad/service-principal-names)
+  *  Useful preparation for [kerberoasting](https://github.com/SpacemanHenry/hacknotes/blob/main/Exploitation/Authentication/Kerberos/Kerberoast.md)
   *  `impacket-GetUserSPNs` for gathering service principal names from linux
   *  `Get-SPN.ps1` or `Invoke-LDAPSearch.ps1` can be used to enumerate SPNs without requesting tickets
-      *  Useful preparation for [kerberoasting](https://github.com/SpacemanHenry/hacknotes/blob/main/Exploitation/Authentication/Kerberos/Kerberoast.md)
 
 ```
 impacket-GetUserSPNs example.com/bob:password -dc-ip 10.0.0.1
@@ -78,4 +79,20 @@ PS > Get-SPN -type service -search "*"
 
 ```
 PS > Invoke-LDAPQuery "serviceprincipalname=*"
+```
+
+## Delegation permissions
+  *  Hunt for user/computer objects configured with delegation permissions
+  *  Enumerating delegation relies on specific object attributes being readable
+      *  [`useraccountcontrol`](https://learn.microsoft.com/en-us/troubleshoot/windows-server/active-directory/useraccountcontrol-manipulate-account-properties) attribute to [check what delegations are enabled](https://www.techjutsu.ca/uac-decoder) 
+      *  [`msDS-AllowedToDelegateTo`](https://learn.microsoft.com/en-us/windows/win32/adschema/a-msds-allowedtodelegateto) to show SPNs allowed for constrained delegation
+  *  `ldapsearch` and `impacket-findDelegation` for enumerating delegation permissions
+
+```
+ldapsearch -x -H ldap://10.0.0.1 -D 'example\bob' -w 'password' -b 'DC=example,DC=local' samaccounttype=805306368 samaccountname useraccountcontrol
+ldapsearch -x -H ldap://10.0.0.1 -D 'example\bob' -w 'password' -b 'DC=example,DC=local' samaccounttype=805306368 samaccountname msDS-AllowedToDelegateTo
+```
+
+```
+impacket-findDelegation example.com/bob:password -dc-ip 10.0.0.1
 ```
