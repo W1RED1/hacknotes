@@ -78,7 +78,7 @@ PS > Get-SPN -type service -search "*"
 ```
 
 ```
-PS > Invoke-LDAPQuery "serviceprincipalname=*"
+PS > Invoke-LDAPSearch "serviceprincipalname=*"
 ```
 
 ## Delegation permissions
