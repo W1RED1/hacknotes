@@ -85,8 +85,8 @@ PS > Invoke-LDAPSearch "serviceprincipalname=*"
   *  Hunt for user/computer objects configured with [delegation permissions](https://github.com/SpacemanHenry/hacknotes/blob/main/Exploitation/Authentication/Kerberos/Delegation.md)
   *  Enumerating delegation relies on specific object attributes being readable
       *  [`useraccountcontrol`](https://learn.microsoft.com/en-us/troubleshoot/windows-server/active-directory/useraccountcontrol-manipulate-account-properties) attribute to [check what delegations are enabled](https://www.techjutsu.ca/uac-decoder) 
-      *  [`msDS-AllowedToDelegateTo`](https://learn.microsoft.com/en-us/windows/win32/adschema/a-msds-allowedtodelegateto) to show SPNs allowed for constrained delegation
-      *  [`msDS-AllowedToActOnBehalfOfOtherIdentity`](https://learn.microsoft.com/en-us/windows/win32/adschema/a-msds-allowedtoactonbehalfofotheridentity) used during resource-based contrained delegation
+      *  [`msDS-AllowedToDelegateTo`](https://learn.microsoft.com/en-us/windows/win32/adschema/a-msds-allowedtodelegateto) to show SPNs allowed for KCD
+      *  [`msDS-AllowedToActOnBehalfOfOtherIdentity`](https://learn.microsoft.com/en-us/windows/win32/adschema/a-msds-allowedtoactonbehalfofotheridentity) used during RBCD
   *  `ldapsearch` and `impacket` scripts for enumerating delegation
 
 ```
