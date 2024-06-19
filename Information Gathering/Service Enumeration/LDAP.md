@@ -96,5 +96,5 @@ ldapsearch -x -H ldap://10.0.0.1 -D 'example\bob' -w 'password' -b 'DC=example,D
 
 ```
 impacket-findDelegation example.com/bob:password -dc-ip 10.0.0.1
-impacket-rbcd -delegate-to 'DC$' -dc-ip 10.0.0.1 -action read example.com/bob:'password'
+impacket-rbcd -delegate-to 'DC$' -dc-ip 10.0.0.1 -action read example.com/bob:password
 ```
