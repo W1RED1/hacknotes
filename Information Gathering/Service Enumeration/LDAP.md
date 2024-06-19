@@ -86,13 +86,15 @@ PS > Invoke-LDAPSearch "serviceprincipalname=*"
   *  Enumerating delegation relies on specific object attributes being readable
       *  [`useraccountcontrol`](https://learn.microsoft.com/en-us/troubleshoot/windows-server/active-directory/useraccountcontrol-manipulate-account-properties) attribute to [check what delegations are enabled](https://www.techjutsu.ca/uac-decoder) 
       *  [`msDS-AllowedToDelegateTo`](https://learn.microsoft.com/en-us/windows/win32/adschema/a-msds-allowedtodelegateto) to show SPNs allowed for constrained delegation
-  *  `ldapsearch` and `impacket-findDelegation` for enumerating delegation permissions
+  *  `ldapsearch` and `impacket` scripts for enumerating delegation
 
 ```
 ldapsearch -x -H ldap://10.0.0.1 -D 'example\bob' -w 'password' -b 'DC=example,DC=local' samaccounttype=805306368 samaccountname useraccountcontrol
-ldapsearch -x -H ldap://10.0.0.1 -D 'example\bob' -w 'password' -b 'DC=example,DC=local' samaccounttype=805306368 samaccountname msDS-AllowedToDelegateTo
+ldapsearch -x -H ldap://10.0.0.1 -D 'example\bob' -w 'password' -b 'DC=example,DC=local' msDS-AllowedToDelegateTo=* samaccountname msDS-AllowedToDelegateTo
+ldapsearch -x -H ldap://10.0.0.1 -D 'example\bob' -w 'password' -b 'DC=example,DC=local' msDS-AllowedToActOnBehalfOfOtherIdentity=* samaccountname msDS-AllowedToActOnBehalfOfOtherIdentity
 ```
 
 ```
 impacket-findDelegation example.com/bob:password -dc-ip 10.0.0.1
+impacket-rbcd -delegate-to 'DC$' -dc-ip 10.0.0.1 -action read example.com/bob:'password'
 ```
