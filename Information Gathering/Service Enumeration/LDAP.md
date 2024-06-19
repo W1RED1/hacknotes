@@ -16,6 +16,7 @@
   *  Custom [`Invoke-LDAPSearch.ps1`](https://github.com/SpacemanHenry/hacknotes/blob/main/Post%20Exploitation/Privilege%20Escalation/Windows/Powershell%20Scripts/Invoke-LDAPSearch.ps1) for searching LDAP from `powershell`
   *  [`impacket-GetUserSPNs`](https://github.com/fortra/impacket/blob/master/examples/GetUserSPNs.py) and [`Get-SPN.ps1`](https://github.com/fortra/impacket/blob/master/examples/GetUserSPNs.py) for gathering service principal names
   *  [`impacket-findDelegation`](https://github.com/fortra/impacket/blob/master/examples/findDelegation.py) for automatically gathering delegation permissions
+  *  [`impacket-rbcd`](https://github.com/fortra/impacket/blob/master/examples/rbcd.py) for parsing RBCD attributes
 
 ## Additonal NSE enumeration
   *  `nmap` [LDAP NSE scripts](https://nmap.org/search/?q=ldap) without credentials will not yield much
