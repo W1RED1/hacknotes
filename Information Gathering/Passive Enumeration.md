@@ -22,6 +22,7 @@
   *  [`Netcraft`](https://www.netcraft.com/tools/) for various OSINT analysis
   *  [`Security Headers`](https://securityheaders.com/), [`BuiltWith`](https://builtwith.com), and [`SSL Labs`](https://www.ssllabs.com/ssltest/) for fingerprinting public web services
   *  [`Shodan`](https://www.shodan.io/), [`Censys`](https://censys.com/), and [`WiGLE`](https://wigle.net/) for fingerprinting various public-facing infrastructure
+  *  [`Depix`](https://github.com/spipm/Depix) for de-pixelating censored information
 
 ## Automatic passive enumeration
   *  `theHarvester` and `recon-ng` for gathering users, e-mails, hosts, etc.
@@ -85,3 +86,10 @@ git clone https://github.com/example/example.git && cd example
 gitleaks detect -v
 gitleaks detect -v -f csv -r /path/to/log.csv
 ```
+
+## Uncensoring
+  *  Certain methods of censorship can be effectively reversed
+      *  Search social media for censored images
+      *  Search for censored data within any public/stolen documents
+  *  Search GitHub for tools to reverse various censorship methods
+  *  `Depix` for de-pixelating images of text
