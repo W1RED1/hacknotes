@@ -87,7 +87,7 @@ gitleaks detect -v
 gitleaks detect -v -f csv -r /path/to/log.csv
 ```
 
-## Uncensoring
+## Weak censorship
   *  Certain methods of censorship can be effectively reversed
       *  Search social media for censored images
       *  Search for censored data within any public/stolen documents
