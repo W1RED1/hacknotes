@@ -23,6 +23,8 @@
 ## Usernames
   *  Find valid usernames and try them everywhere
   *  Spray for weak creds using all usernames
+  *  Identify naming conventions across different services
+      *  If multiple conventions are found, convert known usernames between them
 
 ## Passwords
   *  Spray passwords against all services/usernames
