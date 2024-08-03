@@ -66,7 +66,10 @@ nmap -p 80 -T4 -sC -sV --script="vuln" -vv 10.0.0.1
       *  The presence of certain admin consoles can indicate DB software
   *  What backend language/frameworks is the app using?
       *  File extensions are not always reliable, but still useful
-      *  Check browser dev console functions: `Inspector`, `Debugger`, `Network`, etc.  
+      *  Check browser dev console functions: `Inspector`, `Debugger`, `Network`, etc.
+  *  What dependencies are used underneath the application?
+      *  Monitor HTTP headers during site interactions
+      *  Metadata of generated content can expose dependencies
 
 ## Web server scanning
   *  `nikto` for generic web server vuln scanning: **read all of it**
