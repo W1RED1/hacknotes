@@ -119,7 +119,7 @@ txt,php,aspx,cgi,asp,html,jsp,pdf,doc,docx,xls,xlsx,rtf,bak,xml,xsl,phpthml,sh,p
       *  Consider modifying a wordlist based on that naming convention
 
 ```
-gobuster vhost --url http://example.com --wordlist /usr/share/seclists/Discovery/DNS/namelist.txt -t 40
+gobuster vhost --url http://example.com --wordlist /usr/share/seclists/Discovery/DNS/namelist.txt -t 40 --append-domain
 ```
 
 ## VHOST/subdomain wordlists
