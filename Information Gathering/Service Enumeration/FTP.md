@@ -78,6 +78,10 @@ ftp> mget *
 mget example.txt [anpqy?]? a
 ```
 
+```
+wget -m ftp://anonymous@10.0.0.1
+```
+
 ## Extract metadata from files
   *  `exiftool` for extracting metadata from readable files
   *  Metadata can contain a plethora of information!
