@@ -16,6 +16,7 @@
 ## Things to remember
   *  Manual [FTP protocol commands](https://en.wikipedia.org/wiki/List_of_FTP_commands) requires manipulation of both [control and data channels](https://userpages.umbc.edu/~dgorin1/451/OSI7/dcomm/ftp.htm)
   *  Check all files for sensitive information
+  *  **ALWAYS** list hidden files/directories
 
 ## Useful tools
   *  [`nmap`](https://nmap.org/) for various NSE enum scripts
