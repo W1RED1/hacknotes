@@ -78,8 +78,15 @@ site:example.com filetype:txt
 
 ## Code diving
   *  Search [code hosting sites](https://en.wikipedia.org/wiki/Comparison_of_source-code-hosting_facilities) for sensitive info within publicly readable code
+  *  `git` commands useful for searching commits by hand
   *  `gitleaks` for automatically detecting secrets in larger codebases
       *  Other tools exist for this and often require configuring tokens/API keys
+
+```
+git help
+git log
+git show [COMMIT ID]
+```
 
 ```
 git clone https://github.com/example/example.git && cd example
