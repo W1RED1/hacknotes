@@ -105,6 +105,7 @@ txt,php,aspx,cgi,asp,html,jsp,pdf,doc,docx,xls,xlsx,rtf,bak,xml,xsl,phpthml,sh,p
 ```
 
 ```
+ls -la --sort=size /usr/share/seclists/Discovery/Web-Content
 /usr/share/wordlists/dirbuster/*
 /usr/share/seclists/Discovery/Web-Content/*
 /usr/share/dirb/*
