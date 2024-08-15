@@ -89,47 +89,40 @@ nikto -h http://10.0.0.1
   *  `gobuster` for bruteforcing HTTP resources
   *  **Run more than one wordlist**
       *  Consider running multiple times during unfavorable network conditions
-      *  Combine multiple wordlists to eliminate duplicate values
   *  Common sitemaps include `robots.txt` and `sitemap.xml`
   *  Check for HTTP resources matching words of interest
+  *  Various `seclists` [files for HTTP directory/file discovery](https://github.com/danielmiessler/SecLists/tree/master/Discovery/Web-Content)
+      *  Combine desired lists to remove duplicates entries
+      *  Select any lists related to the web stack in-use
+      *  Start with smaller groups of lists to check for quick hits
 
 ```
 gobuster dir --url http://10.0.0.1 --wordlist /usr/share/wordlists/dirb/big.txt -t 40 -x php,zip,bak
 ```
 
-// List of extensions
 ```
 txt,php,aspx,cgi,asp,html,jsp,pdf,doc,docx,xls,xlsx,rtf,bak,xml,xsl,phpthml,sh,pl,py,config,php7,exe
 ```
 
-## Directory/File wordlists
-  *  Various `seclists` files for HTTP directory/file discovery
-  *  More at [`/usr/share/seclists/Discovery/Web-Content/`](https://github.com/danielmiessler/SecLists/tree/master/Discovery/Web-Content)
-
 ```
-/usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt
-/usr/share/seclists/Discovery/Web-Content/common.txt
-/usr/share/seclists/Discovery/Web-Content/big.txt
-/usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt
+/usr/share/wordlists/dirbuster/*
+/usr/share/seclists/Discovery/Web-Content/*
+/usr/share/dirb/*
 ```
 
 ## VHOST busting
   *  `gobuster` for bruteforcing [Virtual Hosts](https://httpd.apache.org/docs/current/vhosts/)
-  *  Found any subdomains already?
-      *  Consider modifying a wordlist based on that naming convention
+  *  Various `seclists` [files for VHOST discovery](https://github.com/danielmiessler/SecLists/tree/master/Discovery/DNS)
+      *  Combine desired lists to remove duplicates entries
+      *  Start with smaller groups of lists to check for quick hits
+      *  Modify wordlists based on any known naming conventions
 
 ```
 gobuster vhost --url http://example.com --wordlist /usr/share/seclists/Discovery/DNS/namelist.txt -t 40 --append-domain
 ```
 
-## VHOST/subdomain wordlists
-  *  Various `seclists` files for VHOST discovery
-  * More at [`/usr/share/seclists/Discovery/DNS/`](https://github.com/danielmiessler/SecLists/tree/master/Discovery/DNS)
-
 ```
-/usr/share/seclists/Discovery/DNS/subdomains-top1million-20000.txt
-/usr/share/seclists/Discovery/DNS/subdomains-top1million-110000.txt
-/usr/share/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt
+/usr/share/seclists/Discovery/DNS/*
 ```
 
 ## Parameter fuzzing
@@ -137,20 +130,18 @@ gobuster vhost --url http://example.com --wordlist /usr/share/seclists/Discovery
       *  Also applies to REST APIs
       *  Parameters often exist without being listed in the HTML source
   *  Fuzz parameter values as well
-      *  This will multiply the number of requests
       *  Consider creating a smaller wordlist to avoid massive request amounts
       *  Use alphanum characters, web attack strings, commands, anything!
       *  Fuzz multiple times using different HTTP methods
+  *  Various `seclists` [files for fuzzing parameters](https://github.com/danielmiessler/SecLists/tree/master/Fuzzing)
+      *  Select any lists related to the web stack in-use
+      *  Includes wordlists for fuzzing various web attacks
+      *  Consider using a directory list as well
 
 ```
 wfuzz -w /path/to/wordlist.txt http://10.0.0.1/page?FUZZ=id
 wfuzz -w /path/to/wordlist1.txt -w /path/to/wordlist2.txt http://10.0.0.1/page?FUZZ=FUZ2Z
 ```
-
-## Parameter wordlists
-  *  Various `seclists` files for fuzzing parameters
-      *  Includes wordlists for fuzzing various web attacks
-      *  Consider using a directory list as well
 
 ```
 /usr/share/seclists/Discovery/Web-Content/burp-parameter-names.txt
