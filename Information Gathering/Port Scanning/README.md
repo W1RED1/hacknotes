@@ -25,7 +25,7 @@ hping3 10.0.0.1 -c 1 -p 22 -F
       *  Poorly configured timeouts will lead to false negatives
       *  Most other solutions are faster for when speed is priority
   *  Upload a port scanner to the beachhead and scan from there
-      *  For this purpose, [`portscan.go`](https://github.com/SpacemanHenry/notes/blob/main/Information%20Gathering/Port%20Scanning/portscan.go) and [`portscan.py`](https://github.com/SpacemanHenry/notes/blob/main/Information%20Gathering/Port%20Scanning/portscan.py) were written
+      *  For this purpose, [`portscan.go`](https://github.com/SpacemanHenry/hacknotes/blob/main/Information%20Gathering/Port%20Scanning/portscan.go) and [`portscan.py`](https://github.com/SpacemanHenry/hacknotes/blob/main/Information%20Gathering/Port%20Scanning/portscan.py) were written
       *  [`netcat`](https://www.cyberciti.biz/faq/linux-port-scanning/)/[`bash`](https://github.com/Sq00ky/Bash-Port-Scanner) can also perform port scans
 
 ```
