@@ -78,7 +78,8 @@ site:example.com filetype:txt
 
 ## Code diving
   *  Search [code hosting sites](https://en.wikipedia.org/wiki/Comparison_of_source-code-hosting_facilities) for sensitive info within publicly readable code
-  *  `git` commands useful for searching commits by hand
+      *  [`git-dumper`](https://github.com/arthaud/git-dumper) for dumping repos from web servers
+  *  `git` commands useful for searching commits by hand  
   *  `gitleaks` for automatically detecting secrets in larger codebases
       *  Other tools exist for this and often require configuring tokens/API keys
 
