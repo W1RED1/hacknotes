@@ -86,6 +86,9 @@ site:example.com filetype:txt
 git help
 git log
 git show [COMMIT ID]
+git reflog
+git diff
+git diff --staged
 ```
 
 ```
