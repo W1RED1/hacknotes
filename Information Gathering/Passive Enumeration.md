@@ -81,7 +81,7 @@ site:example.com filetype:txt
   *  Search [code hosting sites](https://en.wikipedia.org/wiki/Comparison_of_source-code-hosting_facilities) for sensitive info within publicly readable code
       *  `git-dumper` for dumping repos from web servers
   *  `git` [commands](https://education.github.com/git-cheat-sheet-education.pdf) useful for searching commits by hand  
-  *  [`gitleaks`](https://github.com/gitleaks/gitleaks) for automatically detecting secrets in larger codebases
+  *  `gitleaks` for automatically detecting secrets in larger codebases
       *  Other tools exist for this and often require configuring tokens/API keys
 
 ```
