@@ -16,6 +16,7 @@
 ## Useful tools
   *  [`theHarvester`](https://github.com/laramies/theHarvester) and [`recon-ng`](https://github.com/lanmaster53/recon-ng) for automatically gathering info from passive sources
   *  [`whois`](https://linux.die.net/man/1/whois) [clients](https://whois.domaintools.com) for gathering domain registration info
+  *  [`git-dumper`](https://github.com/arthaud/git-dumper) for cloning repos from non-git web servers
   *  [`gitleaks`](https://gitleaks.io/) for finding secrets in code repositories
   *  [`OSINT Framework`](https://osintframework.com/) for **tons** of OSINT resources
   *  [`Social Searcher`](https://www.social-searcher.com/) for searching various social media platforms
@@ -78,7 +79,7 @@ site:example.com filetype:txt
 
 ## Code diving
   *  Search [code hosting sites](https://en.wikipedia.org/wiki/Comparison_of_source-code-hosting_facilities) for sensitive info within publicly readable code
-      *  [`git-dumper`](https://github.com/arthaud/git-dumper) for dumping repos from web servers
+      *  `git-dumper` for dumping repos from web servers
   *  `git` [commands](https://education.github.com/git-cheat-sheet-education.pdf) useful for searching commits by hand  
   *  [`gitleaks`](https://github.com/gitleaks/gitleaks) for automatically detecting secrets in larger codebases
       *  Other tools exist for this and often require configuring tokens/API keys
