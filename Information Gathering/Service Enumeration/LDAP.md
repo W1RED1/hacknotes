@@ -100,3 +100,14 @@ ldapsearch -x -H ldap://10.0.0.1 -D 'example\bob' -w 'password' -b 'DC=example,D
 impacket-findDelegation example.com/bob:password -dc-ip 10.0.0.1
 impacket-rbcd -delegate-to 'DC$' -dc-ip 10.0.0.1 -action read example.com/bob:password
 ```
+
+## Deleted AD objects
+  *  [AD recycling bin](https://learn.microsoft.com/en-us/windows-server/identity/ad-ds/get-started/adac/active-directory-recycle-bin?tabs=adac) disabled by default, check under `Optional Features` CN
+  *  Check tombstone lifetime under `Directory Service` CN
+  *  Dump [tombstone objects](https://learn.microsoft.com/en-us/troubleshoot/windows-server/active-directory/phantoms-tombstones-infrastructure-master) using [LDAP show deleted extension](https://learn.microsoft.com/en-us/openspecs/sharepoint_protocols/ms-upsldap/b7d17cbd-03bb-4c1f-aad1-bcdf587b5c14)
+
+```
+ldapsearch -x -H ldap://10.0.0.1 -D 'example\bob' -w 'password' -b 'CN=Optional Features,CN=Directory Service,CN=Windows NT,CN=Services,CN=Configuration,DC=example,DC=local'
+ldapsearch -x -H ldap://10.0.0.1 -D 'example\bob' -w 'password' -s 'base' -b 'CN=Directory Service,CN=Windows NT,CN=Services,CN=Configuration,DC=example,DC=local' 'tombstoneLifetime'
+ldapsearch -x -H ldap://10.0.0.1 -D 'example\bob' -w 'password' -b 'DC=example,DC=local' -E 1.2.840.113556.1.4.417 '(isDeleted=TRUE)'
+```
