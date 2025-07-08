@@ -113,3 +113,8 @@ ldapsearch -x -H ldap://10.0.0.1 -D 'example\bob' -w 'password' -b 'CN=Optional 
 ldapsearch -x -H ldap://10.0.0.1 -D 'example\bob' -w 'password' -s 'base' -b 'CN=Directory Service,CN=Windows NT,CN=Services,CN=Configuration,DC=example,DC=local' 'tombstoneLifetime'
 ldapsearch -x -H ldap://10.0.0.1 -D 'example\bob' -w 'password' -b 'DC=example,DC=local' -E 1.2.840.113556.1.4.417 '(isDeleted=TRUE)'
 ```
+
+```
+PS > Get-ADObject -Filter 'isDeleted -eq $TRUE' -IncludeDeletedObjects -Properties *
+PS > Get-ADObject -Identity '00000000-0000-0000-0000-000000000000' -IncludeDeletedObjects | Restore-ADObject
+```
