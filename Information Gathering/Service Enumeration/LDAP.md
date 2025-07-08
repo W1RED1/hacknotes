@@ -102,9 +102,11 @@ impacket-rbcd -delegate-to 'DC$' -dc-ip 10.0.0.1 -action read example.com/bob:pa
 ```
 
 ## Deleted AD objects
-  *  [AD recycling bin](https://learn.microsoft.com/en-us/windows-server/identity/ad-ds/get-started/adac/active-directory-recycle-bin?tabs=adac) disabled by default, check under `Optional Features` CN
-  *  Check tombstone lifetime under `Directory Service` CN
+  *  Enumerate [AD recycling bin](https://learn.microsoft.com/en-us/windows-server/identity/ad-ds/get-started/adac/active-directory-recycle-bin?tabs=adac) and deleted objects
+      *  Disabled by default, find config under `Optional Features`/`Directory Service`
   *  Dump [tombstone objects](https://learn.microsoft.com/en-us/troubleshoot/windows-server/active-directory/phantoms-tombstones-infrastructure-master) using [LDAP show deleted extension](https://learn.microsoft.com/en-us/openspecs/sharepoint_protocols/ms-upsldap/b7d17cbd-03bb-4c1f-aad1-bcdf587b5c14)
+  *  `ldapsearch` and `ldapmodify` for finding/restoring tombstone objects from linux
+  *  [AD powershell module](https://learn.microsoft.com/en-us/powershell/module/activedirectory/?view=windowsserver2025-ps) cmdlets make this easier
 
 ```
 ldapsearch -x -H ldap://10.0.0.1 -D 'example\bob' -w 'password' -b 'CN=Optional Features,CN=Directory Service,CN=Windows NT,CN=Services,CN=Configuration,DC=example,DC=local'
