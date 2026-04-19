@@ -65,6 +65,29 @@ nbtscan -r 10.0.0.1
 nmblookup -A 10.0.0.1
 ```
 
+## Enumerate SMB dialects and signing
+  *  `netexec` for quickly gathering basic SMB information
+      *  Gather domain status, signing enforcement, and dialect support
+      *  Always try `guest`, `null`, and `anonymous` sessions
+
+```
+nxc smb 10.0.0.1 -u 'bob' -p 'password'
+nxc smb 10.0.0.1 -d 'example.com' -u 'bob' -p 'password'
+nxc smb 10.0.0.1 -u 'bob' -H '8846F7EAEE8FB117AD06BDD830B7586C'
+```
+
+## Enumerate coercion vulnerabilities
+  *  `netexec` for enumerating popular [Windows authentication coercion vulnerabilities](https://www.netexec.wiki/smb-protocol/scan-for-vulnerabilities)
+      *  Gather domain status, signing enforcement, and dialect support
+      *  Always try `guest`, `null`, and `anonymous` sessions
+  *  Also [enumerate for abusable services](https://www.netexec.wiki/smb-protocol/spooler-webdav-running) such as [print spooler](https://hacktricks.wiki/en/windows-hardening/active-directory-methodology/printers-spooler-service-abuse.html) and [WebDAV client](https://logan-goins.com/2024-07-23-ldap-relay/#explanation---webclient-abusing-once-again-a-30-year-old-protocol)
+
+```
+nxc smb 10.0.0.1 -u 'bob' -p 'password' -M coerce_plus
+nxc smb 10.0.0.1 -d 'example.com' -u 'bob' -p 'password' -M coerce_plus
+nxc smb 10.0.0.1 -u 'bob' -H '8846F7EAEE8FB117AD06BDD830B7586C' -M coerce_plus
+```
+
 ## Mapping SMB shares
   *  `smbmap`, `smbclient`, and `netexec` for listing SMB file shares
       *  Always try `guest`, `null`, and `anonymous` sessions
@@ -84,9 +107,9 @@ smbclient -U 'anonymous' -L \\\\10.0.0.1
 ```
 
 ```
-netexec smb 10.0.0.1 -u 'bob' -p 'password' --shares
-netexec smb 10.0.0.1 -d 'example.com' -u 'bob' -p 'password' --shares
-netexec smb 10.0.0.1 -u 'bob' -H '8846F7EAEE8FB117AD06BDD830B7586C' --shares
+nxc smb 10.0.0.1 -u 'bob' -p 'password' --shares
+nxc smb 10.0.0.1 -d 'example.com' -u 'bob' -p 'password' --shares
+nxc smb 10.0.0.1 -u 'bob' -H '8846F7EAEE8FB117AD06BDD830B7586C' --shares
 ```
 
 ## Manual R/W checks
