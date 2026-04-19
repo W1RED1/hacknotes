@@ -30,6 +30,17 @@ nmap -sS -p389 10.0.0.1 -T4 -vv -d --script "ldap* and not brute" --script-args 
 nmap -sS -p389 10.0.0.1 -T4 -vv -d --script "ldap* and not brute" --script-args 'ldap.username=bob,ldap.password=password,ldap.qfilter=users,ldap.attrib=sAMAccountName,ldap.maxobjects=-1'
 ```
 
+## Enumerate LDAP signing and channel binding
+  *  `netexec` for quickly gathering LDAP signing enforcement settings
+      *  AD machine accounts are allowed to modify their own LDAP attributes
+      *  Always try `null` and `guest` binds
+
+```
+nxc ldap 10.0.0.1 -u 'bob' -p 'password'
+nxc ldap 10.0.0.1 -d 'example.com' -u 'bob' -p 'password'
+nxc ldap 10.0.0.1 -u 'bob' -H '8846F7EAEE8FB117AD06BDD830B7586C'
+```
+
 ## LDAP domain dump
   *  `ldapdomaindump` for reading all objects from an LDAP server
       *  Create a new directory for this, outputs a lot of files
