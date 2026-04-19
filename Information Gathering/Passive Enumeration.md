@@ -24,11 +24,13 @@
   *  [`Security Headers`](https://securityheaders.com/), [`BuiltWith`](https://builtwith.com), and [`SSL Labs`](https://www.ssllabs.com/ssltest/) for fingerprinting public web services
   *  [`Shodan`](https://www.shodan.io/), [`Censys`](https://censys.com/), and [`WiGLE`](https://wigle.net/) for fingerprinting various public-facing infrastructure
   *  [`Depix`](https://github.com/spipm/Depix) for de-pixelating censored information
+  *  [`WeakestLink`](https://github.com/shellfarmer/WeakestLink) browser extension for scraping names from LinkedIn
 
 ## Automatic passive enumeration
   *  `theHarvester` and `recon-ng` for gathering users, e-mails, hosts, etc.
       *  Many info sources will require an API key in order to function
       *  Not all modules/options within these are passive: choose carefully
+  *  `WeakestLink` browser extension for scraping employee names from company LinkedIn pages
 
 ```
 theHarvester -d example.com -b yahoo,duckduckgo
