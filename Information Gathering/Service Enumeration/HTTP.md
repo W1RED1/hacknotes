@@ -100,6 +100,10 @@ nikto -h http://10.0.0.1
       *  Start with smaller groups of lists to check for quick hits
 
 ```
+katana -u http://10.0.0.1
+```
+
+```
 gobuster dir --url http://10.0.0.1 --wordlist /usr/share/wordlists/dirb/big.txt -t 40 -x php,zip,bak
 ```
 
