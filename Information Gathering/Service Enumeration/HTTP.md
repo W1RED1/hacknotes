@@ -29,7 +29,7 @@
   *  [`curl`](https://curl.se/) for quickly grabbing HTTP response headers
   *  [`nmap`](https://nmap.org/) for various NSE enum scripts
   *  [`nikto`](https://github.com/sullo/nikto) for web server vuln scanning
-  *  [`gobuster`](https://github.com/OJ/gobuster) for bruteforce discovery of various domains and resources
+  *  [`gobuster`](https://github.com/OJ/gobuster)/[`dirsearch`](https://github.com/maurosoria/dirsearch) for bruteforce discovery of various domains and resources
   *  [`seclists`](https://github.com/danielmiessler/SecLists) for various fuzzing/discovery wordlists
   *  [`wfuzz`](https://www.edge-security.com/wfuzz.php) for web fuzzing/discovery
   *  [`davtest`](https://github.com/cldrn/davtest) and [`cadaver`](https://github.com/notroj/cadaver) for testing/interacting with WebDAV file shares
