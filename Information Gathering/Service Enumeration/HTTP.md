@@ -86,12 +86,14 @@ nikto -h http://10.0.0.1
   *  Consider creating a personal sitemap to track reviewed pages
   *  Don't mangle code when using online deobfuscators/beautifiers
 
-## Directory busting
-  *  `gobuster` for bruteforcing HTTP resources
-  *  **Run more than one wordlist**
-      *  Consider running multiple times during unfavorable network conditions
+## Content discovery
   *  Common sitemaps include `robots.txt` and `sitemap.xml`
-  *  Check for HTTP resources matching words of interest
+      *  Research sitemap locations of any underlying CMS/frameworks
+  *  `katana` for crawling/spidering web apps
+  *  `gobuster`/`dirsearch` for bruteforcing HTTP resource files/paths
+      *  **Run more than one wordlist**
+      *  Consider running multiple times during unfavorable network conditions
+      *  Check for HTTP resources matching words of interest
   *  Various `seclists` [files for HTTP directory/file discovery](https://github.com/danielmiessler/SecLists/tree/master/Discovery/Web-Content)
       *  Combine desired lists to remove duplicates entries
       *  Select any lists related to the web stack in-use
