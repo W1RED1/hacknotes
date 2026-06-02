@@ -35,6 +35,7 @@
   *  [`davtest`](https://github.com/cldrn/davtest) and [`cadaver`](https://github.com/notroj/cadaver) for testing/interacting with WebDAV file shares
   *  [`whatweb`](https://morningstarsecurity.com/research/whatweb) for gathering web stack info via HTTP response headers
   *  [`wpscan`](https://wpscan.com/)/[`droopescan`](https://github.com/SamJoan/droopescan) for scanning respective CMSes
+  *  [`katana`](https://github.com/projectdiscovery/katana) for crawling/spidering web apps  
 
 ## Browsing through a proxy
   *  Some sites may require you to reach other sites on the internet to render properly
