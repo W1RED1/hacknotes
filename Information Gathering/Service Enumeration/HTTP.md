@@ -90,6 +90,8 @@ nikto -h http://10.0.0.1
   *  Common sitemaps include `robots.txt` and `sitemap.xml`
       *  Research sitemap locations of any underlying CMS/frameworks
   *  `katana` for crawling/spidering web apps
+      *  Includes options for endpoint discovery via JS parsing
+      *  Form extraction allows identification of input forms during crawling
   *  `gobuster`/`dirsearch` for bruteforcing HTTP resource files/paths
       *  **Run more than one wordlist**
       *  Consider running multiple times during unfavorable network conditions
@@ -101,6 +103,10 @@ nikto -h http://10.0.0.1
 
 ```
 katana -u http://10.0.0.1
+```
+
+```
+katana -u 'http://10.0.0.1' -td -kf all -fs fqdn -jsl -jc -fx -j -o spider.json
 ```
 
 ```
