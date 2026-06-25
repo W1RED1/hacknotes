@@ -106,7 +106,7 @@ katana -u http://10.0.0.1
 ```
 
 ```
-katana -u 'http://10.0.0.1' -td -kf all -fs fqdn -jsl -jc -fx -j -o spider.json
+katana -u 'http://10.0.0.1' -td -kf all -fs fqdn -jsl -jc -fx -j -o spider.json  
 jq '. | select(.response.forms != null) | {endpoint: .request.endpoint, forms: .response.forms}' spider.json
 ```
 
