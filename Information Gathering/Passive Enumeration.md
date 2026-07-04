@@ -25,6 +25,7 @@
   *  [`Shodan`](https://www.shodan.io/), [`Censys`](https://censys.com/), and [`WiGLE`](https://wigle.net/) for fingerprinting various public-facing infrastructure
   *  [`Depix`](https://github.com/spipm/Depix) for de-pixelating censored information
   *  [`WeakestLink`](https://github.com/shellfarmer/WeakestLink) browser extension for scraping names from LinkedIn
+  *  [`onedrive_user_enum`](https://github.com/nyxgeek/onedrive_user_enum) for validating potential e-mail addresses via OneDrive URL technique
 
 ## Automatic passive enumeration
   *  `theHarvester` and `recon-ng` for gathering users, e-mails, hosts, etc.
@@ -107,3 +108,12 @@ gitleaks detect -v -f csv -r /path/to/log.csv
       *  Search for censored data within any public/stolen documents
   *  Search GitHub for tools to reverse various censorship methods
   *  `Depix` for de-pixelating images of text
+
+## OneDrive user enumeration
+  *  `onedrive_user_enum` for constructing OneDrive URLs to enumerate Azure/Entra ID tenet users
+      *  Only validates users which have a personal OneDrive link created
+      *  Does not create any login requests, leverages Microsoft M365 services ties to OneDrive
+
+```
+python3 onedrive_enum.py -d example.com -t exampletenet -U /path/to/usernames.txt
+```
