@@ -1,9 +1,7 @@
 # FTP/21 (TCP) 
 
 ## Questions to ask yourself
-  *  What is the version number?  
-      *  Refer to nmap scans version detection and script enum info
-      *  `Google` and `searchsploit` all the things
+  *  What is the FTPd software and version number?  
   *  What are my permissions?
       *  Directories/files of interest, can we read/write them?
       *  Gaining creds means gaining permissions, check back in later
@@ -14,9 +12,10 @@
       *  Consider setting a [trap to coerce authentication](https://www.ired.team/offensive-security/initial-access/t1187-forced-authentication)
 
 ## Things to remember
+  *  Research CVEs for discovered FTPd software
   *  Manual [FTP protocol commands](https://en.wikipedia.org/wiki/List_of_FTP_commands) requires manipulation of both [control and data channels](https://userpages.umbc.edu/~dgorin1/451/OSI7/dcomm/ftp.htm)
-  *  Check all files for sensitive information
-  *  **ALWAYS** list hidden files/directories
+  *  Recursively download files and extract information
+      *  **ALWAYS** list hidden files/directories
 
 ## Useful tools
   *  [`nmap`](https://nmap.org/) for various NSE enum scripts
@@ -46,18 +45,18 @@ openssl s_client -connect 10.0.0.1:21 -starttls ftp
   *  Check if anonymous login is enabled
 
 ```
+ftp anonymous@10.0.0.1
+```
+
+```
 anonymous : anonymous
 anonymous : (blank)
 ftp : ftp
 ```
 
-```
-ftp anonymous@10.0.0.1
-```
-
 ## Default credentials
   *  `hydra` for quickly checking default/weak credentials
-  *  `Google` ftpd version/version #
+  *  `Google` FTPd software for default credentials
 
 ```
 hydra -C /usr/share/seclists/Passwords/Default-Credentials/ftp-betterdefaultpasslist.txt -vV ftp://10.0.0.1
