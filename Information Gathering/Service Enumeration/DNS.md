@@ -2,20 +2,18 @@
 
 ## Questions to ask yourself
   *  What is the nameserver software and version number?
-      *  `Google` and `searchsploit` all the things always
   *  Does there appear to be a naming convention?
       *  Consider modifying a wordlist to match
 
 ## Things to remember
-  *  Records are based on names
-      *  A record can exist for `example.com` but not for `www.example.com`
-      *  Different zone files exist for different domains, including [subdomains](https://datatracker.ietf.org/doc/html/rfc1034#section-3.1)
+  *  Research CVEs for any nameserver software components
+  *  Different zone files exist for different domains, including [subdomains](https://datatracker.ietf.org/doc/html/rfc1034#section-3.1)
   *  Nameservers in the DNS chain may have interesting records
       *  Don't jump to a single nameserver for everything
 
 ## Useful tools
   *  [`dig`](https://linux.die.net/man/1/dig) and [`host`](https://linux.die.net/man/1/host) for obtaining DNS records
-  *  [`dnsrecon`](https://github.com/darkoperator/dnsrecon) and [`dnsenum`](https://github.com/SparrowOchon/dnsenum2) for various DNS enumeration capabilities
+  *  [`dnsrecon`](https://github.com/darkoperator/dnsrecon), [`dnsenum`](https://github.com/SparrowOchon/dnsenum2), and [`nmap`](https://nmap.org/docs.html) for various DNS enumeration capabilities
   *  [`gobuster`](https://github.com/OJ/gobuster) for threaded DNS bruteforcing
   *  [`seclists`](https://github.com/danielmiessler/SecLists) for various subdomain wordlists
 
@@ -65,9 +63,8 @@ host -t mx example.com example.public.nameserver
 ```
 
 ```
-dig -f scope.txt @example.authority.nameserver
-dig a example.com @example.public.nameserver
-dig a www.example.com @example.public.nameserver
+dig -f scope.txt @example.public.nameserver +noall +answer
+dig cname example.com @example.public.nameserver
 dig mx example.com @example.public.nameserver
 ```
 
@@ -78,7 +75,7 @@ dig mx example.com @example.public.nameserver
       *  **DO NOT** assume DNS entries exist for all VHOSTs
 
 ```
-gobuster dns -d example.com -r example.public.nameserver:53 -i -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-20000.txt -t 35
+gobuster dns --domain 'example.com' --resolver 'example.public.nameserver:53' -c -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-20000.txt -t 35
 ```
 
 ## Subdomain wordlists
@@ -92,9 +89,9 @@ gobuster dns -d example.com -r example.public.nameserver:53 -i -w /usr/share/sec
 /usr/share/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt
 ```
 
-## Reverse-lookup bruteforce
-  *  `dnsrecon` for finding more hosts
-  *  Probably best to specify a nameserver for this
+## Reverse-lookup scanning
+  *  `dnsrecon` and `nmap` for performing reverse lookup scans
+      *  Discover potential live hosts via reverse lookup of each IP in a given space
 
 ```
 dnsrecon -r 10.0.0.1/24
@@ -102,8 +99,13 @@ dnsrecon -r 10.0.0.1/24 -n nameserver.example.com
 dnsrecon -d example.com -r 10.0.0.1/24 -n nameserver.example.com
 ```
 
-## Manually finding hostname
-  *  This will often appear elsewhere, but good to do manually if DNS is available
+```
+nmap -sL 10.0.0.1/24
+nmap -sL -iL scope.txt
+```
+
+## Nameserver self-resolution
+  *  Manually resolve the name of the nameserver itself
 
 ```
 nslookup
