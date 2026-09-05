@@ -7,7 +7,7 @@
       *  Gaining creds means gaining permissions, check back in later
   *  Where does this FTP directory exist on the filesystem?
       *  Does it overlap with another service?
-      *  `Google` names of interesting directories and files
+      *  Research names of any interesting files/directories
   *  Any writable shares appear to be frequently opened?
       *  Consider setting a [trap to coerce authentication](https://www.ired.team/offensive-security/initial-access/t1187-forced-authentication)
 
@@ -26,7 +26,8 @@
   *  [`seclists`](https://github.com/danielmiessler/SecLists) for default credential wordlists
 
 ## Additional NSE enumeration
-  *  `nmap` has plenty of [FTP recon scripts](https://nmap.org/search/?q=ftp)
+  *  `nmap` [FTP recon scripts](https://nmap.org/search/?q=ftp) to quick checks
+      *  Anonymous access and a few well-known FTPd backdoors and CVEs 
 
 ```
 nmap -sS -p21 -T4 --script "ftp-* and not ftp-brute" -sV -vv 10.0.0.1
@@ -41,8 +42,8 @@ nc -vn 10.0.0.1 21
 openssl s_client -connect 10.0.0.1:21 -starttls ftp
 ```
 
-## Anonymous login
-  *  Check if anonymous login is enabled
+## Anonymous access
+  *  Check if anonymous access is enabled
 
 ```
 ftp anonymous@10.0.0.1
@@ -54,7 +55,7 @@ anonymous : (blank)
 ftp : ftp
 ```
 
-## Default credentials
+## Weak/default credentials
   *  `hydra` for quickly checking default/weak credentials
   *  `Google` FTPd software for default credentials
 
