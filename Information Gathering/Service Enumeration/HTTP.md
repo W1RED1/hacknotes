@@ -1,26 +1,21 @@
 # HTTP/80/443 (TCP)  
 
 ## Questions to ask yourself
-  *  What is the web stack being used?
-      *  Is there more than one?
-  *  Is there a CMS being used?
-      *  Any plugins installed?
-  *  Anything weird in the source code?
+  *  What web technologies comprise the software stack?
+  *  Any weird HTML, JS, links, comments, etc. in the page source?
   *  What HTTP methods are available?
   *  Any writable WebDAV shares appear to be frequently opened?
       *  Consider setting a [trap to coerce authentication](https://www.ired.team/offensive-security/initial-access/t1187-forced-authentication)
 
 ## Things to remember
-  *  `searchsploit` and `Google` **all the things**
-  *  Watch out for sites running multiple backends
-  *  Interact with the site as a normal user
-      *  Read and click through **everything**
-  *  Review source code carefully
-      *  View source on **ALL THE PAGES ALWAYS**
+  *  Interact with and browse the site as a normal user
+  *  Reverse proxy configurations may route traffic between multiple backends
+  *  Research CVEs for all web stack components
+  *  Review HTML/JS sources for each page
       *  Values of input fields in the HTML source can expose parameters
-      *  Use browser `Inspector` to view the [DOM](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model)
-  *  Pass all traffic through Burp proxy
-      *  Look at GET/POST parameters, cookies, etc.
+      *  Use browser `Inspector` tools to view [DOM](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model) based page contents
+  *  Pass all traffic through Burp proxy and review while browsing
+      *  Look for interesting GET/POST parameters, cookies, etc.
       *  Try different HTTP methods for any interesting requests
 
 ## Useful tools
