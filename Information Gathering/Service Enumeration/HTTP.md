@@ -39,7 +39,8 @@
 
 ## Header grab
   *  `curl` for grabbing any interesting HTTP response headers
-      *  Useful for confirming OS/web server software
+      *  Quick check for web server software header
+      *  Explicit server headers may also indicate OS
 
 ```
 curl -i 10.0.0.1
