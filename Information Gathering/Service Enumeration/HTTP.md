@@ -33,7 +33,7 @@
   *  [`katana`](https://github.com/projectdiscovery/katana) for crawling/spidering web apps  
 
 ## Browsing through a proxy
-  *  Some sites may require you to reach other sites on the internet to render properly
+  *  Some sites may require JS or other resources from the internet to render properly
       *  Configure pattern matching in `FoxyProxy` to only proxy certain URLs
       *  Clear the configuration when done!
 
