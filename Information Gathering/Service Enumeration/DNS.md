@@ -65,6 +65,7 @@ host -t mx example.com example.public.nameserver
 ```
 
 ```
+dig -f scope.txt @example.authority.nameserver
 dig a example.com @example.public.nameserver
 dig a www.example.com @example.public.nameserver
 dig mx example.com @example.public.nameserver
