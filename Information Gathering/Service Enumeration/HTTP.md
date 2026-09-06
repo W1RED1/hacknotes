@@ -56,16 +56,13 @@ nmap -p 80 -T4 -sC -sV --script="vuln" -vv 10.0.0.1
 
 ## Identify web stack
   *  Collect data on underlying web technology
-  *  What is the server OS?
-  *  What web server soft is serving it?
-      *  Response headers can expose this and more
-  *  What database server soft is it running?
-      *  The presence of certain admin consoles can indicate DB software
-  *  What backend language/frameworks is the app using?
-      *  File extensions are not always reliable, but still useful
-      *  Check browser dev console functions: `Inspector`, `Debugger`, `Network`, etc.
-  *  What dependencies are used underneath the application?
-      *  Monitor HTTP headers during site interactions
+  *  Identify hosting provider vs self-hosted IP spaces
+  *  Identify underlying operating systems
+  *  Identify DBMS, connectors, [ORMs](https://www.geeksforgeeks.org/dbms/what-is-object-relational-mapping-orm-in-dbms/), etc.
+  *  Identify backend languages, frameworks, and routing
+      *  HTTP headers often expose some level of backend server information
+  *  Identify dependencies or other components of the application
+      *  Monitor for interesting HTTP headers
       *  Metadata of generated content can expose dependencies
 
 ## Web server scanning
