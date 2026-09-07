@@ -92,11 +92,12 @@ nikto -h http://10.0.0.1
       *  Start with smaller groups of lists to check for quick hits
 
 ```
-katana -u 'http://10.0.0.1' -jc -jsl -kf all -td -pc -kb-endpoints -fs fqdn -ndef -j -o spider.json
+katana -u 'http://10.0.0.1' -jc -jsl -kf all -fx -td -pc -kb-endpoints -headless -fs fqdn -ndef -j -o spider.json
+jq '.request.endpoint' spider.json
 ```
 
 ```
-katana -u 'http://10.0.0.1' -H 'Cookie: session=00000000000000000000000000000000' -jc -jsl -kf all -td -pc -kb-endpoints -fs fqdn -cos '^.*logout$' -fx -ndef -j -o spider.json
+katana -u 'http://10.0.0.1' -H 'Cookie: session=00000000000000000000000000000000' -jc -jsl -kf all -fx -td -pc -kb-endpoints -headless -fs fqdn -cos '^.*logout$' -ndef -j -o spider.json
 jq '. | select(.response.forms != null) | {endpoint: .request.endpoint, forms: .response.forms}' spider.json
 ```
 
