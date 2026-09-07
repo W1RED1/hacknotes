@@ -57,13 +57,18 @@ nmap -p 80 -T4 -sC -sV --script="vuln" -vv 10.0.0.1
 ## Identify web stack
   *  Collect data on underlying web technology
   *  Identify hosting provider vs self-hosted IP spaces
+      *  Performing passive recon for DNS and whois data
   *  Identify underlying operating systems
+      *  Self-hosted OS may be identified via `nmap` TCP/IP fingerprinting
+      *  Cloud-hosted OS may be identified via documentation or application behavior/messages
   *  Identify DBMS, connectors, [ORMs](https://www.geeksforgeeks.org/dbms/what-is-object-relational-mapping-orm-in-dbms/), etc.
+      *  Information disclosures such as verbose error output may make this obvious
+      *  Potential DBMS/RDS solutions may be suggested by cloud provider documentation 
   *  Identify backend languages, frameworks, and routing
       *  HTTP headers often expose some level of backend server information
   *  Identify dependencies or other components of the application
       *  Monitor for interesting HTTP headers
-      *  Metadata of generated content can expose dependencies
+      *  Extracting metadata of generated content can expose dependencies
 
 ## Web server scanning
   *  `nikto` for generic web server vuln scanning: **read all of it**
