@@ -96,12 +96,13 @@ jq '.request.endpoint' spider.json
 ```
 
 ```
-katana -u 'http://10.0.0.1' -H 'Cookie: session=00000000000000000000000000000000' -jc -jsl -kf all -fx -td -pc -kb-endpoints -headless -fs fqdn -cos '^.*logout$' -ndef -j -o spider.json
-jq '. | select(.response.forms != null) | {endpoint: .request.endpoint, forms: .response.forms}' spider.json
+katana -u 'http://10.0.0.1' -H 'Cookie: session=00000000000000000000000000000000' -jc -jsl -kf all -fx -td -pc -kb-endpoints -headless -fs fqdn -cos '^.*logout$' -ndef -j -o katana.json
+jq '. | select(.response.forms != null) | {endpoint: .request.endpoint, forms: .response.forms}' katana.json
 ```
 
 ```
-gobuster dir --url http://10.0.0.1 --wordlist /usr/share/wordlists/dirb/big.txt -t 40 -x php,zip,bak
+python3 dirsearch.py -u 'http://10.0.0.1' -w /usr/share/wordlists/dirb/big.txt -e 'php,phar,inc,php.bak,php~,zip,bak' -f -t 30 -r --full-url -O json -o dirsearch.json
+jq '.results.[] | {url: .url, size: .contentLength}' dirsearch.json
 ```
 
 ```
