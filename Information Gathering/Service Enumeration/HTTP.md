@@ -106,10 +106,6 @@ jq '.results.[] | {url: .url, size: .contentLength}' dirsearch.json
 ```
 
 ```
-txt,php,aspx,cgi,asp,html,jsp,pdf,doc,docx,xls,xlsx,rtf,bak,xml,xsl,phpthml,sh,pl,py,config,php7,exe
-```
-
-```
 ls -la --sort=size /usr/share/seclists/Discovery/Web-Content
 /usr/share/wordlists/dirbuster/*
 /usr/share/seclists/Discovery/Web-Content/*
