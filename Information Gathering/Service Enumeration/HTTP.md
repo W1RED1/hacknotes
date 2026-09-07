@@ -28,7 +28,6 @@
   *  [`seclists`](https://github.com/danielmiessler/SecLists) for various fuzzing/discovery wordlists
   *  [`wfuzz`](https://www.edge-security.com/wfuzz.php) for web fuzzing/discovery
   *  [`davtest`](https://github.com/cldrn/davtest) and [`cadaver`](https://github.com/notroj/cadaver) for testing/interacting with WebDAV file shares
-  *  [`whatweb`](https://morningstarsecurity.com/research/whatweb) for gathering web stack info via HTTP response headers
   *  [`wpscan`](https://wpscan.com/)/[`droopescan`](https://github.com/SamJoan/droopescan) for scanning respective CMSes
   *  [`katana`](https://github.com/projectdiscovery/katana) for crawling/spidering web apps  
 
@@ -170,15 +169,10 @@ cadaver http://10.0.0.1
 ```
 
 ## CMS detection
-  *  `whatweb` and HTTP response headers can potentially disclose CMS
+  *  HTTP response headers can potentially disclose CMS
       *  CMS can appear in source code but may not disclose version number
       *  CMS directories may appear disallowed in **robots.txt**
   *  Once a CMS is identified check default/install/config files for version numbers
-
-```
-whatweb 'http://10.0.0.1'
-whatweb -v 'http://10.0.0.1'
-```
 
 ## [Wordpress](https://wordpress.com/) enumeration
   *  `wpscan` will withhold vulnerability info if you do not supply an API key
