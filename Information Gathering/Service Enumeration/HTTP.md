@@ -37,15 +37,6 @@
       *  Configure pattern matching in `FoxyProxy` to only proxy certain URLs
       *  Clear the configuration when done!
 
-## Header grab
-  *  `curl` for grabbing any interesting HTTP response headers
-      *  Quick check for web server software header
-      *  Explicit server headers may also indicate OS
-
-```
-curl -i 10.0.0.1
-```
-
 ## Additional NSE enumeration
   *  `nmap` has plenty of [HTTP recon/scanning scripts](https://nmap.org/search/?q=http)
 
