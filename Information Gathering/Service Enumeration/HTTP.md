@@ -78,17 +78,14 @@ nikto -h http://10.0.0.1
   *  Common sitemaps include `robots.txt` and `sitemap.xml`
       *  Research sitemap locations of any underlying CMS/frameworks
   *  `katana` for crawling/spidering web apps
-      *  Includes options for endpoint discovery via JS parsing
-      *  Form extraction allows identification of input forms during crawling
-      *  Manually filter out endpoints which destroy sessions during authenticated crawling
-  *  `gobuster`/`dirsearch` for bruteforcing HTTP resource files/paths
-      *  **Run more than one wordlist**
-      *  Consider running multiple times during unfavorable network conditions
-      *  Check for HTTP resources matching words of interest
-  *  Various `seclists` [files for HTTP directory/file discovery](https://github.com/danielmiessler/SecLists/tree/master/Discovery/Web-Content)
-      *  Combine desired lists to remove duplicates entries
-      *  Select any lists related to the web stack in-use
-      *  Start with smaller groups of lists to check for quick hits
+      *  Includes options for crawling via JS/DOM parsing (`jsluice` can be memory intense)
+      *  Form extraction aids identification of hidden form inputs
+      *  Regex filter endpoints which destroy sessions for authenticated crawling
+  *  `gobuster`/`dirsearch` for fuzzing for files, directories, API actions/endpoints, routes, etc.
+      *  Monitor network conditions and adjust scan timings accordingly
+  *  Combine relevant lists and remove duplicates entries
+      *  Various `seclists` [files for HTTP directory/file discovery](https://github.com/danielmiessler/SecLists/tree/master/Discovery/Web-Content)
+      *  Consider scraping targets for words of interest
 
 ```
 katana -u 'http://10.0.0.1' -jc -jsl -kf all -fx -td -pc -kb-endpoints -headless -fs fqdn -ndef -j -o katana.json
