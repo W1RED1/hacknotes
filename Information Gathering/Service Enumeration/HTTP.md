@@ -81,7 +81,7 @@ nikto -h http://10.0.0.1
       *  Includes options for crawling via JS/DOM parsing (`jsluice` can be memory intense)
       *  Form extraction aids identification of hidden form inputs
       *  Regex filter endpoints which destroy sessions for authenticated crawling
-  *  `gobuster`/`dirsearch` for fuzzing for files, directories, API actions/endpoints, routes, etc.
+  *  `dirsearch`/`ffuf` for fuzzing for files, directories, API actions/endpoints, routes, etc.
       *  Monitor network conditions and adjust scan timings accordingly
   *  Combine relevant lists and remove duplicates entries
       *  Various `seclists` [files for HTTP directory/file discovery](https://github.com/danielmiessler/SecLists/tree/master/Discovery/Web-Content)
@@ -100,6 +100,10 @@ jq '. | select(.response.forms != null) | {endpoint: .request.endpoint, forms: .
 ```
 python3 dirsearch.py -u 'http://10.0.0.1' -w /usr/share/wordlists/dirb/big.txt -e 'php,phar,inc,php.bak,php~,zip,bak' -f -t 30 -r --full-url -O json -o dirsearch.json
 jq '.results.[] | {url: .url, size: .contentLength}' dirsearch.json
+```
+
+```
+ffuf -w <(cat /usr/share/seclists/Discovery/Web-Content/api/*.txt | sort -u):ACTION -u 'http://10.0.0.1/api/ACTION'
 ```
 
 ```
