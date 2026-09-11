@@ -37,7 +37,7 @@
 
 ## Generic web server scanning
   *  Quickly scan web servers to gather protocol, web stack information, content, CVEs
-      * `httpx` for differentiating HTTP/HTTPS services from a list of hosts with some web stack detection 
+      * `httpx` for differentiating HTTP/HTTPS services from a list of hosts
       * `nmap` has several [HTTP scripts](https://nmap.org/search/?q=http)
       * `nikto` parses web stack info from several response headers/web content
       * `nuclei` has tons of templates for web stack detection, header checks, CVE probes, and more! 
