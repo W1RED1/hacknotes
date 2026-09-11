@@ -22,26 +22,41 @@
   *  [`Burpsuite`](https://portswigger.net/burp/communitydownload) for manipulating web requests
   *  [`FoxyProxy`](https://getfoxyproxy.org/) for switching between proxies while browsing
   *  [`curl`](https://curl.se/) for quickly grabbing HTTP response headers
-  *  [`nmap`](https://nmap.org/) for various NSE enum scripts
-  *  [`nikto`](https://github.com/sullo/nikto) for web server vuln scanning
+  *  [`nmap`](https://nmap.org/)/[`nikto`](https://github.com/sullo/nikto)/[`nuclei`](https://github.com/projectdiscovery/nuclei)/[`httpx`](https://github.com/projectdiscovery/httpx) for various web server scanning
+  *  [`katana`](https://github.com/projectdiscovery/katana) for crawling/spidering web apps  
   *  [`gobuster`](https://github.com/OJ/gobuster)/[`dirsearch`](https://github.com/maurosoria/dirsearch) for bruteforce discovery of various domains and resources
-  *  [`seclists`](https://github.com/danielmiessler/SecLists) for various fuzzing/discovery wordlists
   *  [`wfuzz`](https://www.edge-security.com/wfuzz.php) for web fuzzing/discovery
+  *  [`seclists`](https://github.com/danielmiessler/SecLists) for various fuzzing/discovery wordlists
   *  [`davtest`](https://github.com/cldrn/davtest) and [`cadaver`](https://github.com/notroj/cadaver) for testing/interacting with WebDAV file shares
   *  [`wpscan`](https://wpscan.com/)/[`droopescan`](https://github.com/SamJoan/droopescan) for scanning respective CMSes
-  *  [`katana`](https://github.com/projectdiscovery/katana) for crawling/spidering web apps  
 
 ## Browsing through a proxy
+  *  Burp browser provides a clean browsing environment for testing traffic
   *  Some sites may require JS or other resources from the internet to render properly
       *  Configure pattern matching in `FoxyProxy` to only proxy certain URLs
-      *  Clear the configuration when done!
 
-## Additional NSE enumeration
-  *  `nmap` has plenty of [HTTP recon/scanning scripts](https://nmap.org/search/?q=http)
+## Generic web server scanning
+  *  Quickly scan web servers to gather protocol, web stack information, content, CVEs
+      * `httpx` for differentiating HTTP/HTTPS services from a list of hosts with some web stack detection 
+      * `nmap` has several [HTTP scripts](https://nmap.org/search/?q=http)
+      * `nikto` parses web stack info from several response headers/web content
+      * `nuclei` has tons of templates for web stack detection, header checks, CVE probes, and more! 
+
+```
+./httpx -l targets.txt -sc -cl -td
+```
 
 ```
 nmap -p 80 -T4 -sC -sV --script=http-enum -vv 10.0.0.1
 nmap -p 80 -T4 -sC -sV --script="vuln" -vv 10.0.0.1
+```
+
+```
+nikto -h http://10.0.0.1
+```
+
+```
+nuclei -target 10.0.0.1 -t http
 ```
 
 ## Identify web stack
@@ -59,13 +74,6 @@ nmap -p 80 -T4 -sC -sV --script="vuln" -vv 10.0.0.1
   *  Identify dependencies or other components of the application
       *  Monitor for interesting HTTP headers
       *  Extracting metadata of generated content can expose dependencies
-
-## Web server scanning
-  *  `nikto` for generic web server vuln scanning: **read all of it**
-
-```
-nikto -h http://10.0.0.1
-```
 
 ## Source code review
   *  **VIEW THE SOURCE LUKE**
